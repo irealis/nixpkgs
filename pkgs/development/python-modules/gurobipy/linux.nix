@@ -1,4 +1,4 @@
-{ lib, buildPythonPackage, python, gurobi }:
+{ lib, buildPythonPackage, python310, gurobi }:
 
 buildPythonPackage {
   pname = "gurobipy";
@@ -16,7 +16,7 @@ buildPythonPackage {
 
   postFixup = ''
     patchelf --set-rpath $out/lib \
-      $out/lib/${python.libPrefix}/site-packages/gurobipy/gurobipy.so
+      $out/lib/${python310.libPrefix}/site-packages/gurobipy/gurobipy.so
   '';
 
   meta = with lib; {

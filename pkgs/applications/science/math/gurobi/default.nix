@@ -1,4 +1,4 @@
-{ stdenv, lib, fetchurl, autoPatchelfHook, python3 }:
+{ stdenv, lib, fetchurl, autoPatchelfHook, python310 }:
 
 stdenv.mkDerivation rec {
   pname = "gurobi";
@@ -12,7 +12,7 @@ stdenv.mkDerivation rec {
   sourceRoot = "gurobi${builtins.replaceStrings ["."] [""] version}/linux64";
 
   nativeBuildInputs = [ autoPatchelfHook ];
-  buildInputs = [ (python3.withPackages (ps: [ ps.gurobipy ])) ];
+  buildInputs = [ (python310.withPackages (ps: [ ps.gurobipy ])) ];
 
   strictDeps = true;
 
